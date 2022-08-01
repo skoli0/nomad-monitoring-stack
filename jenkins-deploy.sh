@@ -1,9 +1,10 @@
 #!/bin/bash
 
 jobs=("prometheus" "grafana" "alertmanager" "node-exporter" "sachet" "traefik" "whoami")
-action=$(echo "$1" | tr [A-Z] [a-z])
-job=$2
+action=$1
+job=$(echo "$2" | tr [A-Z] [a-z])
 
+echo $action $job
 case "$action" in
    "start") 
         if [[ " ${jobs[*]} " =~ " ${job} " ]]; then
