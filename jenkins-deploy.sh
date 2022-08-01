@@ -22,6 +22,14 @@ case "$action" in
             echo "=== Invalid job. Exiting..."
         fi
    ;;
+    "validate")
+        if [[ " ${jobs[*]} " =~ " ${job} " ]]; then
+            echo "=== Stopping job ${job}..."
+            nomad job validate ${job}.nomad.hcl
+        else
+            echo "=== Invalid job. Exiting..."
+        fi
+   ;;
    "status")
        nomad status
    ;;
